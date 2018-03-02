@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.ys.demo"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        config {
+            //签名文件在项目根目录下
+            //KEY_ALIAS，KEY_PASSWORD，STORE_PASSWORD写在项目根目录下的gradle.properties里
+//            keyAlias KEY_ALIAS
+//            keyPassword KEY_PASSWORD
+//            storeFile file('../test.jks')
+//            storePassword STORE_PASSWORD
+        }
+    }
+    buildTypes {
+        release {
+//            minifyEnabled true//开启混淆
+//            shrinkResources true//需要和minifyEnabled true一起使用
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.config//使用上面配置的签名进行打包
+        }
+
+        debug {
+//            minifyEnabled false
+//            signingConfig signingConfigs.config//ddebug模式下也使用上面配置的签名进行打包
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':sdk')
+    //ButterKnife注入
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
+
